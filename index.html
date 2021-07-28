@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern JS</title>
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <style>
+      body {
+        width: 100%;
+        margin: auto;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .container {
+        width: 60vw;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="indexDOMintro.html">Section 3</a>
+      <a href="#home">Section 4</a>
+      <a href="#home">Section 5</a>
+      <a href="#home">Section 6</a>
+    </nav>
+    <div class="container">
+      <h1>Modern JS Course From The Beginning</h1>
+      <h2>JavaScript Sandbox: Section 2</h2>
+      <h3>Brad Traversy</h3>
+      <ol>
+        <li>Console</li>
+        <li>Data Types</li>
+        <li>Conversion</li>
+        <li>Math</li>
+        <li>Strings</li>
+        <li>Template Literals</li>
+        <li>Arrays</li>
+        <li>Oject Literals</li>
+        <li>Dates & Time</li>
+        <li>If Statements & Coparison Operators</li>
+        <li>Switches</li>
+        <li>Function Declarations & Expressions</li>
+        <li>General Loops</li>
+        <li>A look at the Window Object</li>
+        <li>Block Scope with let & const</li>
+      </ol>
+    </div>
+
+    <!-- <div style="margin-top: 1000px"></div> -->
+
+    <!-- <script src="./js/02 JS Language/app_consoleLog_let_const.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_dataTypes.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_conversion.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_math.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_strings.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_template_literals.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_arrays.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_object_literals.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_dates_time.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_if_comparison.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_functions.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_windo.js"></script> -->
+    <!-- <script src="./js/02 JS Language/app_loops_iterations.js"></script> -->
+    <script src="./js/02 JS Language/app_scope.js"></script>
+
+    <!-- Nav -->
+    <script>
+      const open = document.getElementById("open");
+      const close = document.getElementById("close");
+      const container = document.querySelector(".container");
+
+      open.addEventListener("click", () => container.classList.add("show-nav"));
+      close.addEventListener("click", () =>
+        container.classList.remove("show-nav")
+      );
+    </script>
+  </body>
+</html>
