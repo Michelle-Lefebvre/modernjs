@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>OPP</title>
+    <style>
+      body {
+        width: 100%;
+        margin: auto;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .container {
+        width: 60vw;
+        margin: auto;
+      }
+      strong{
+          color: darkmagenta;
+          font-weight: bolder;
+          font-size: large;
+      }
+      h2{
+          text-decoration: darkmagenta underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../indexDOMintro.html">Section 3</a>
+      <a href="../04 Task List/index.html">Task List</a>
+      <a href="../04 Loan Calculator/index.html">Loan Calculator</a>
+      <a href="../04 Number Guesser/index_guess_number.html">Number Guesser</a>
+      <a href="index-opp.html" class="active">OOP</a>
+    </nav>
+    <div class="container">
+      <h1>Object Oriented JavaScript ES5 & ES6</h1>
+      <ul>
+        <li><a href="#this">Constructors & the 'this Keyword</a></li>
+        <li><a href="#constructors">Built In Constructors</a></li>
+        <li><a href="#prototypes">Prototypes Explained</a></li>
+        <li><a href="#inheritance">Prototypal Inheritance</a></li>
+        <li><a href="#obj-create">Using Object.create</a></li>
+        <li><a href="#es6-classes">ES6 Classes</a></li>
+        <li><a href="#sub-classes">Sub Classes</a></li>
+        <li><a href="#"></a></li>
+      </ul>
+      <section id="constructors">
+        <h2>Constructors & the 'this Keyword</h2>
+        <p>
+          <strong>Object Literals </strong> fine when dealing with one object or
+          one instance
+        </p>
+        <p>
+          <strong>Constructors</strong> good for mulitple instances of an object
+        </p>
+        <p>
+          <strong>this</strong> refers to the current instance of the object.
+          This can be use inside a function or outside in the global scope which
+          is the window object.
+        </p>
+
+        <code>
+          function Person(name, dob) {<br />
+          this.name = name;<br />
+          this.birthday = new Date(dob);<br />
+
+          // method within a constructor<br />
+          this.calculateAge = function () {<br />
+          // subtract time from dob<br />
+          const diff = Date.now() - this.birthday.getTime();<br />
+          const ageDate = new Date(diff);<br />
+          return Math.abs(ageDate.getUTCFullYear() - 1970);<br />
+          };<br />
+          }<br />
+        </code>
+      </section>
+      <section id="constructors">
+        <h2>Built In Constructors</h2>
+        <p>
+          There's other core objects that have constructors as well in
+          JavaScript, but most of them are NOT ADVISABLE to use, for instance,
+          primitive, primitive types like strings, numbers, booleans. They can
+          actually be created as objects instead of primitives. And we can do
+          this by using certain constructors like string and number ect. <br />
+
+          Now, there's not too many reasons why you would want to do this.</p>
+            <p>
+            </p>
+            <strong>There's a lot of reasons why you wouldn't do this.</strong>
+            It slows down execution speed. It's more code, it's confusing. And then you have issues when you're using the triple equals operator and you're trying to compare the value to, you know, the value and the type. So even though this is something that you're not going to use a lot, I didn't want to leave it out
+        </p>
+        <h3>String</h3>
+        <code>
+            const name1 = 'Jeff';<br />
+            const name2 = new String('Jeff');<br />
+            String {"Jeff"}<br />
+            0: "J"<br />
+            1: "e"<br />
+            2: "f"<br />
+            3: "f"<br />
+            length: 4<br />
+        </code>
+        
+      </section>
+
+      <section id="prototypes">
+        <h2>Prototypes Explained</h2>
+        <p>Each object in JavaScript has a prototype and a prototype is an object itself.<br>
+        All objects inherit their properties and methods from their prototype.
+        <br>
+        When you're dealing with object literals, then you're inheriting from a prototype called object.prototype
+        <br>
+        </p>
+        <code>
+            function Person(firstName, lastName, dob) {<br>
+            &nbsp;&nbsp;this.firstName = firstName;<br>
+                &nbsp;&nbsp;this.lastName = lastName;<br>
+                &nbsp;&nbsp;this.birthday = new Date(dob);<br>
+            }<br>
+            <br>
+            const joseph = new Person('Joseph', 'Jones', 'March 20 2000');<br>
+            const mary = new Person('Mary', 'Johnson', '4-23-95');
+            console.log(joseph);<br>
+            <br>
+            // Calculaate age is a prototype method<br>
+            Person.prototype.calculateAge = function () {<br>
+                &nbsp;&nbsp;const diff = Date.now() - this.birthday.getTime();<br>
+                &nbsp;&nbsp;const ageDate = new Date(diff);<br>
+                &nbsp;&nbsp;return Math.abs(ageDate.getUTCFullYear() - 1970);<br>
+            };<br>
+            console.log(joseph.calculateAge());<br>
+            <br>
+            // Get full name<br>
+            Person.prototype.getFullName = function () {<br>
+                &nbsp;&nbsp;return `${this.firstName} ${this.lastName}`;<br>
+            };<br>
+            <br>
+            // Gets Married<br>
+            Person.prototype.getsMarried = function (newLastName) {<br>
+                &nbsp;&nbsp;this.lastName = newLastName;<br>
+            };<br>
+            <br>
+            console.log(mary.getFullName());<br>
+            mary.getsMarried('Waverly');<br>
+            console.log(mary.getFullName());<br>
+            console.log(mary.hasOwnProperty('getFullName'));<br>
+        </code>
+      </section>
+
+      <section id="inheritance">
+        <h2>Prototypal Inheritance</h2>
+        <p>  <strong>call()</strong> is a function that allows us to call another function from somewhere else in the current context.
+        </p>
+        <p>Person Constructor</p>
+        <code>
+            function Persons(firstName, lastName) {<br>
+            &nbsp;&nbsp;this.firstName = firstName;<br>
+            &nbsp;&nbsp;this.lastName = lastName;<br>
+            }<br>
+            <br>
+            // greeting <br>
+            Person.prototype.greeting = function () {<br>
+                return `Hello there ${this.firstName} ${this.lastName}`;<br>
+            };<br>
+        </code>
+        <p>Customer Constructor - calls on Person constructor</p>
+        <code>
+            function Customer(firstName, lastName, phone, membership) {<br>
+                &nbsp;&nbsp;<strong>Persons.call(this, firstName, lastName);</strong><br>
+                &nbsp;&nbsp;this.phone = phone;<br>
+                &nbsp;&nbsp;this.membership = membership;<br>
+            }<br>
+            <br>
+            // Inherit the Person prototype <br>
+            Customer.prototype = Object.create(Person.prototype);<br>
+            <br>
+            // Make Customer.propotype return Customer() <br>
+            Customer.prototype.constructor = Customer;<br>
+            <br>
+            // Create a Customer <br>
+            const customer1 = new Customer('Tom', 'Smith', '555-555-5555', 'Standard');<br>
+            <br>
+            console.log(customer1.greeting());<br>
+            console.log(customer1);
+        </code>
+      </section>
+
+      <section id="obj-create">
+        <h2>Using Object.create</h2>
+        <p>An alternative way to create objects</p>
+        <code>
+            const personProtoypes = {<br>
+                &nbsp;&nbsp;greeting: function () {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return `Hello there ${this.firstName} ${this.lastName}`;<br>
+                },<br>
+                &nbsp;&nbsp;getsMarried: function (newLastName) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.lastName = newLastName;<br>
+                }<br>
+            };<br>
+            <br>
+            const mary2 = Object.create(personProtoypes);<br>
+            mary2.firstName = 'Mary';<br>
+            mary2.lastName = 'Wilson';<br>
+            mary2.age = 30;<br>
+            mary2.getsMarried('Thompson');<br>
+            <br>
+            console.log(mary2.greeting());<br>
+            <br>
+            const matt = Object.create(personProtoypes, {<br>
+                &nbsp;&nbsp;firstName: {<br>
+                    v&nbsp;&nbsp;&nbsp;&nbsp;alue: 'Matt'<br>
+                &nbsp;&nbsp;},<br>
+                &nbsp;&nbsp;lastName: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;value: 'Jetson'<br>
+                &nbsp;&nbsp;},<br>
+                &nbsp;&nbsp;age: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;value: 36<br>
+                &nbsp;&nbsp;}<br>
+            });<br>
+            <br>
+            console.log(matt);<br>
+            console.log(matt.greeting());<br>
+            
+        </code>
+      </section>
+
+      <section id="es6-classes">
+        <h2>ES6 Classes</h2>
+        <code>
+            class Person3 { <br>
+                &nbsp;&nbsp;constructor(firstName, lastName, dob) { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.firstName = firstName; <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.lastName = lastName; <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.birthday = new Date(dob); <br>
+                } <br>
+             <br>
+                greeting() { <br>
+                    &nbsp;&nbsp;return `Hey there ${this.firstName} ${this.lastName}`; <br>
+                } <br>
+             <br>
+                calculateAge() { <br>
+                    &nbsp;&nbsp;const diff = Date.now() - this.birthday.getTime(); <br>
+                    &nbsp;&nbsp;const ageDate = new Date(diff); <br>
+                    &nbsp;&nbsp;return Math.abs(ageDate.getUTCFullYear() - 1970); <br>
+                } <br>
+             <br>
+                getsMarried(newLastName) { <br>
+                    &nbsp;&nbsp;this.lastName = newLastName; <br>
+                } <br>
+             <br>
+                // static method <br>
+                static addNumbers(x, y) { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return x + y; <br>
+                    &nbsp;&nbsp;} <br>
+            } <br>
+            const mickey = new Person3('Mickey', 'Williams', '11-13-1980'); <br>
+            mickey.getsMarried('Travis'); <br>
+             <br>
+            console.log(mickey); <br>
+            console.log(mickey.greeting()); <br>
+            console.log(mickey.calculateAge()); <br>
+        </code>
+        <p>A static method is one that you can use without instantiate an object. Instantiate is when we create an object from the class.
+            <br>
+        To call a static method we need to use the class name to call it:
+        </p>
+        <code>console.log(Person3.addNumbers(5, 5));</code>
+      </section>
+
+      <section id="sub-classes">
+        <h2>Sub Classes</h2>
+        <code>
+            class Person4 { <br>
+                &nbsp;&nbsp;constructor(firstName, lastName) { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.firstName = firstName; <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.lastName = lastName; <br>
+            
+                &nbsp;&nbsp;} <br>
+             <br>
+                &nbsp;&nbsp;greeting() { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return `Hello there ${this.firstName} ${this.lastName}`; <br>
+                &nbsp;&nbsp;} <br>
+            } <br>
+             <br>
+            // creating a Customer class that extends Person <br>
+            class Customer4 extends Person4 { <br>
+                &nbsp;&nbsp;constructor(firstName, lastName, phone, membership) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;super(firstName, lastName); // calls the parent class constructor <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.phone = phone; <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.membership = membership; <br>
+                &nbsp;&nbsp;} <br>
+             <br>
+                &nbsp;&nbsp;static getMembershipCost() { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return 500; <br>
+                &nbsp;&nbsp;} <br>
+            } <br>
+             <br>
+            const mike = new Customer4('Mike', 'Masson', '123-456-1234', 'Standard'); <br>
+             <br>
+            console.log(mike); <br>
+            console.log(mike.greeting()); <br>
+            console.log(Customer4.getMembershipCost()); <br>
+        </code>
+      </section>
+    </div>
+
+    <script src="opp.js"></script>
+  </body>
+</html>
