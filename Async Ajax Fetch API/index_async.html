@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      body {
+        width: 100%;
+        margin: auto;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .container {
+        width: 60vw;
+        margin: auto;
+      }
+      li {
+          list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../indexDOMintro.html">Section 3</a>
+      <a href="../04 Task List/index.html">Task List</a>
+      <a href="../04 Loan Calculator/index.html">Loan Calculator</a>
+      <a href="../04 Number Guesser/index_guess_number.html">Number Guesser</a>
+      <a href="../oop/index-opp.html">OOP</a>
+      <a href="../oop_book_list_prj/index.html">Book List</a>
+      <a href="index_async.html" class="active">Async</a>
+    </nav>
+    <div class="container">
+      <h1>Modern JS Course From The Beginning</h1>
+      <h2>Async Ajax Fetch API</h2>
+      <h3>Brad Traversy</h3>
+      
+      <h4>Section 7 - Table of Contents</h4>
+        <ul>
+            <li><a href="#asyncWhat">What is Asynchronous Programming?</a></li>
+            <li><a href="#ajaxXHR">Ajax & XHR Introduction</a></li>
+            <li><a href="#">Working With Ajax & JSON</a></li>
+            <li><a href="#">Data From an External API = Chuck Norris Project</a></li>
+            <li><a href="#">REST APIs & HTTP Requests</a></li>
+            <li><a href="#">Callback Functions</a></li>
+            <li><a href="#">Custom HTTP Library (Ajax with Callbacks)</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+      </ul>
+    
+      <div id="asyncWhat">
+        <h3>What is Synchronous Code?</h3>
+        <code>
+            posts = loadPostsSync();
+                // ...wait til posts are fetched
+                // ...do something with posts
+            doTheNextThing*(); // Has to wait until posts load
+        </code>
+        <p>Synchronous code is referred to as Blocking Code because it must wait to load, however long that may take.</p>
+          <h3>What is Asynchronous Programming?</h3>
+          <p>Ajax isn't a language or framework or a library.
+            <br>
+            It's a set of web technologies to send and receive data from the client and server.
+            <br>
+            And it does this asynchronously.So it's done behind the scenes without having to explicitly reload the Web page.</p>
+            <p>Most Async code you work with will be part of an API library. </p>
+                <ul>
+                    <li>XMLHttpRequest & Fetch</li>
+                    <li>jQuery Ajax, Axios, other HTTP libraries</li>
+                    <li>Node.js fs ( filesystem ) module</li>
+                </ul>
+                <p>
+                    These are all async technologies, so you just have to handle the response in a certain way.
+                </p>
+                <p>There are a few ways to work with Async code:</p>
+                <ul>
+                    <li>Callbacks</li>
+                    <li>Promises ES6</li>
+                    <li>Async/Await</li>
+                </ul>
+      </div>
+      <div id="ajaxXHR">
+          <h2>AJAX</h2>
+          Asynchronous JavaScript in XML
+      </div>
+      <script src="app_async.js"></script>
+</body>
+</html>
