@@ -23,10 +23,70 @@
       #results {
         display: none;
       }
+
+      body {
+        width: 100%;
+        margin: auto;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: 80px;
+        text-transform: capitalize;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+        background-color: #fff;
+        font-size: 1.1em;
+      }
+
+      nav a {
+        flex: 1;
+        text-decoration: none;
+        color: black;
+        padding: 24px 0;
+        justify-content: space-around;
+      }
+
+      nav a:hover {
+        color: white;
+        background-color: dodgerblue;
+      }
+
+      .active {
+        bottom: -40px;
+        border-bottom: 10px solid dodgerblue;
+      }
+
+      .container {
+        width: 60vw;
+        margin: auto;
+      }
+      strong{
+          color: darkmagenta;
+          font-weight: bolder;
+          font-size: large;
+      }
+      h2{
+          text-decoration: darkmagenta underline;
+      }
     </style>
   </head>
-
   <body class="bg-dark">
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../indexDOMintro.html">Section 3</a>
+      <a href="../04 Task List/index.html">Task List</a>
+      <a href="index.html" class="active">Loan Calculator</a>
+      <a href="../04 Number Guesser/index_guess_number.html">Number Guesser</a>
+      <a href="../oop/index-opp.html">OOP</a>
+      <a href="../oop_book_list_prj/index.html">Book List</a>
+    </nav>
+
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
@@ -140,5 +200,5 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-  </body>
+  </section>
 </html>
