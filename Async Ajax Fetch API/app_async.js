@@ -1,4 +1,4 @@
-// Chuck Norris Generator
+/* Chuck Norris Generator */
 document.querySelector('.get-jokes').addEventListener('click', getJokes);
 
 function getJokes(e) {
@@ -31,3 +31,63 @@ function getJokes(e) {
 
     e.preventDefault();
 }
+
+/* CALLBACK FUNCTIONS */
+
+const postings = [{
+        title: 'Post One',
+        body: 'This is post one.'
+    },
+    {
+        title: 'Post Two',
+        body: 'This is post Two.'
+    },
+];
+// SYNCHONOUS WAY
+// function createPost() {
+//     // to mimic the server response time by using setTimeout
+//     setTimeout(function () {
+//         postings.push(post);
+//     }, 2000);
+// }
+
+// function getPostings() {
+//     setTimeout(function () {
+//         let output = '';
+//         postings.forEach(function (post) {
+//             output += `<li>${post.title}</li>`;
+//         });
+//         document.querySelector(".calls").innerHTML = output;
+//     }, 1000);
+// }
+
+// createPost({
+//     title: 'Post Three',
+//     body: 'This is post three.'
+// });
+
+// getPostings();
+
+function createPost(post, callback) {
+    // to mimic the server response time by using setTimeout
+    setTimeout(function () {
+        postings.push(post);
+        callback();
+    }, 2000);
+}
+
+function getPostings() {
+    setTimeout(function () {
+        let output = '';
+        postings.forEach(function (post) {
+            output += `<li>${post.title}: ${post.body}</li>`;
+        });
+        document.querySelector(".calls").innerHTML = output;
+    }, 1000);
+}
+
+
+createPost({
+    title: 'Post Three',
+    body: 'This is post three.'
+}, getPostings);

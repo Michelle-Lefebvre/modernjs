@@ -31,9 +31,14 @@
         color: darkmagenta;
         border: 2px solid darkmagenta;
       }
-      #output {
+      #output{
         color: darkmagenta;
         font-size: large;
+      }
+      h2 {
+          background:whitesmoke;
+          padding: 1rem 2rem;
+          margin-top: 5rem;
       }
     </style>
   </head>
@@ -170,7 +175,7 @@
         <div class="container">
           <button id="button">Get Data</button>
           <br />
-          <div id="output"></div>
+          <div id="output" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;"></div>
         </div>
 
         <script src="./xhr/app_xhr.js"></script>
@@ -255,12 +260,12 @@
           <button id="btn2">Get Customers</button>
           <br />
           <h3>Customer</h3>
-          <p>Output from local json file</p>
-          <div id="customer"></div>
+          <p >Output from local json file</p>
+          <div id="customer" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;"></div>
 
           <h3>Customers</h3>
           <p>Output from array of objects in a local json file</p>
-          <div id="customers"></div>
+          <div id="customers" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;"></div>
         </div>
         <p>
           Do validate your code with
@@ -272,7 +277,7 @@
 
       <div id="data">
         <h2>Data From an External API = Chuck Norris Project</h2>
-        <div class="container">
+        <div class="container" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;">
           <h4>Chuck Norris Generator</h4>
           <form>
             <div>
@@ -283,28 +288,134 @@
               <button class="get-jokes">Get Jokes</button>
             </div>
           </form>
-          <ul class="jokes"></ul>
+          <ol class="jokes" style="text-align:justify; margin:2rem;"></ol>
         </div>
       </div>
 
       <div id="rest">
         <h2>REST APIs & HTTP Requests</h2>
+        <h3>What is an API?</h3>
+        <ul>
+            <li>Application Programming Interface</li>
+            <li>Contract provided by one piece of software to another</li>
+            <li>Structured request and response</li>
+            <li>We just worked with and API that takes a requst and responds with jokes</li>
+        </ul>
+
+        <h3>What is REST APIs?</h3>
+        <ul>
+            <li>REST === <strong>Re</strong>presentational <strong>State</strong> <strong>Transfer</strong></li>
+            <li>Architecture style for designing networked applications</li>
+            <li>Relies on a stateless, client-server protocol, almost always HTTP</li>
+            <li>Treats server objects as resources that can be created or destroyed</li>
+            <li>Can be used by virtually any programming language</li>
+            <li>All APIs have their own rules and structure</li>
+        </ul>
+        <h3>HTTP Requests</h3>
+        <ul>
+            <li><strong>GET</strong>: Retrieve data from a specified resource</li>
+            <li><strong>POST</strong>: Submit data to be processed to a specified resource</li>
+            <li><strong>PUT</strong>: Update a specified resource</li>
+            <li><strong>DELETE</strong>: Delete a spcified resource</li>
+            <li><strong>HEAD</strong>: Same as get but does not return a body</li>
+            <li><strong>OPTIONS</strong>: Returns the supported HTTP methods</li>
+            <li><strong>PATCH</strong>: Update partial resources</li>
+        </ul>
+
+        <h3>API Endpoints</h3>
+        <p>Endpoints access to do certain things</p>
+        <ul>
+            <li><strong>GET</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://someurl.com/api/users &nbsp;&nbsp;&nbsp;// Get all users</li>
+
+            <li><strong>GET</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://someurl.com/api/users/1 &nbsp;&nbsp;&nbsp;// Get single user</li>
+            
+            <li><strong>POST</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://someurl.com/api/users &nbsp;&nbsp;&nbsp;// Add user</li>
+
+            <li><strong>PUT</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://someurl.com/api/users/1 &nbsp;&nbsp;&nbsp;// Update users</li>
+
+            <li><strong>DELETE</strong>&nbsp;&nbsp;&nbsp; https://someurl.com/api/users/1 &nbsp;&nbsp;&nbsp;// Delete users</li>
+            
+        </ul>
+
       </div>
 
       <div id="callback">
         <h2>Callback Functions</h2>
+        <p>A callback is simply a function that's passed in as a parameter to another function and then it's ran inside the function body.<br>
+        Examples: forEach array when a function is passed that's a callback. Note: it does stop anything else from happening until it's done.
+        </p>
+        <h3>Blog Posts:</h3>
+        <div class="calls" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;"></div>
+        <h6>Create array of posts / data</h6>
+        <code>
+            const posts = [{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;title: 'Post One',<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;body: 'This is post one.'<br>
+            },<br>
+            {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;title: 'Post Two',<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;body: 'This is post Two.'<br>
+            },<br>
+        ]; <br>
+        </code>
+        <h6>Write callback functions</h6>
+        <code>
+            function createPost(post, callback) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// to mimic the server response time by using setTimeout<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;setTimeout(function () {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;posts.push(post);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;callback();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 2000);<br>
+            }<br>
+            <br>
+            function getPosts() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;setTimeout(function () {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;let output = '';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;posts.forEach(function (post) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;   output += `<li>${post.title}: ${post.body}</li>`;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;});<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;document.querySelector(".calls").innerHTML = output;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 1000);<br>
+            }<br>
+            <br>
+            
+            createPost({<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;title: 'Post Three',<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;body: 'This is post three.'<br>
+            }, getPosts);<br>
+        </code>
       </div>
 
       <div id="library">
         <h2>Custom HTTP Library (Ajax with Callbacks) - Part 1 & 2</h2>
+        <h3>EasyHTTP Example</h3>
+        <p>using ES5</p>
+        <div class="postings" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;">
+        see files: easyhttp.js & app_easy.js</div>
+        <script src="./easy http/easyhttp.js"></script>
+        <script src="./easy http/app_easy.js"></script>
       </div>
 
       <div id="promises">
-        <h2>ES6 Promises</h2>
+        <h2>ES6 Promises .then</h2>
+        <p>using ES5 <br> see file: promises.js</p>
+        <p>Promises are an alternative way of handling asynchronous operations. They're called promises because while they're handling asynchronous operations they can promise to do something when that operation is finished.</p>
+
+        <!-- <script src="promises.js"></script> -->
       </div>
 
       <div id="fetch">
-        <h2>The Fetch API</h2>
+        <h2>The Fetch API</h2><p>using ES6</p>
+        <div class="container">
+            <button id="btn1">Get Text</button>
+            <button id="btn2">Get json</button>
+            <button id="btn3">Get API Data</button>
+            <br><br>
+            <div id="outputs" style="border: 2px solid darkmagenta;text-align:center;margin-bottom: 3rem;">
+            
+            </div>
+            <script src="fetchapi.js"></script>
+        </div>
       </div>
 
       <div id="errorFetch">
@@ -316,7 +427,7 @@
       </div>
 
       <div id="libraryFetch">
-        <h2>ustom HTTP Library (Fetch With Promises - Part 3</h2>
+        <h2>Custom HTTP Library (Fetch With Promises - Part 3</h2>
       </div>
 
       <div id="await">
